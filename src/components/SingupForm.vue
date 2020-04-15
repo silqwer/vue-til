@@ -1,16 +1,16 @@
 <template>
-	<form @submit.prevent="submitForm" action="">
+	<form @submit.prevent="submitForm" action>
 		<div>
 			<label for="username">id:</label>
-			<input type="text" name="" id="username" v-model="username" />
+			<input type="text" name id="username" v-model="username" />
 		</div>
 		<div>
-			<label for="password">pw: </label>
-			<input type="text" name="" id="password" v-model="password" />
+			<label for="password">pw:</label>
+			<input type="text" name id="password" v-model="password" />
 		</div>
 		<div>
-			<label for="nickname">nickname: </label>
-			<input type="text" name="" id="nickname" v-model="nickname" />
+			<label for="nickname">nickname:</label>
+			<input type="text" name id="nickname" v-model="nickname" />
 		</div>
 		<button type="submit">회원가입</button>
 	</form>
@@ -36,7 +36,7 @@ export default {
 				password: this.password,
 				nickname: this.nickname,
 			};
-			const response = registerUser(userData);
+			const response = await registerUser(userData);
 			console.log(response.data);
 			this.logMessage = `${response.data.username}님이 가입되었습니다.`;
 			this.initForm();
