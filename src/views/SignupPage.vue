@@ -1,21 +1,17 @@
 <template>
-	<section>
-		<div class="test">SignupPage</div>
-	</section>
+	<div>
+		<h1>회원가입 페이지</h1>
+		<singup-form></singup-form>
+	</div>
 </template>
 
 <script>
-export default {};
+import SingupForm from '@/components/SingupForm.vue';
+export default {
+	components: {
+		SingupForm,
+	},
+};
 </script>
 
-<style>
-.test {
-	width: 100%;
-	height: 100vh;
-	background-color: darkblue;
-	color: white;
-	position: fixed;
-	top: 0;
-	left: 0;
-}
-</style>
+<style></style>
