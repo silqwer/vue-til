@@ -1,15 +1,15 @@
 <template>
-	<section>
-		<h1>로그인 페이지</h1>
-		<login-page></login-page>
-	</section>
+	<div>
+		<h1 class="page-header">로그인 페이지</h1>
+		<login-form></login-form>
+	</div>
 </template>
 
 <script>
-import LoginPage from '@/components/LoginForm.vue';
+import LoginForm from '@/components/LoginForm.vue';
 export default {
 	components: {
-		LoginPage,
+		LoginForm,
 	},
 };
 </script>

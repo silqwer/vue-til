@@ -1,31 +1,36 @@
 <template>
-	<form @submit.prevent="submitForm" action>
-		<div>
-			<label for="username">id:</label>
-			<input type="text" name id="username" v-model="username" />
+	<div class="contents">
+		<div class="form-wrapper form-wrapper-sm">
+			<form @submit.prevent="submitForm" class="form">
+				<div>
+					<label for="username">id: </label>
+					<input id="username" type="text" v-model="username" />
+				</div>
+				<div>
+					<label for="password">pw: </label>
+					<input id="password" type="text" v-model="password" />
+				</div>
+				<div>
+					<label for="nickname">nickname: </label>
+					<input id="nickname" type="text" v-model="nickname" />
+				</div>
+				<button type="submit" class="btn">회원 가입</button>
+			</form>
+			<p class="log">{{ logMessage }}</p>
 		</div>
-		<div>
-			<label for="password">pw:</label>
-			<input type="text" name id="password" v-model="password" />
-		</div>
-		<div>
-			<label for="nickname">nickname:</label>
-			<input type="text" name id="nickname" v-model="nickname" />
-		</div>
-		<button type="submit">회원가입</button>
-	</form>
+	</div>
 </template>
 
 <script>
-import { registerUser } from '@/api/index.js';
+import { registerUser } from '@/api/index';
 export default {
 	data() {
 		return {
-			// form value
+			// form values
 			username: '',
 			password: '',
 			nickname: '',
-			//log
+			// log
 			logMessage: '',
 		};
 	},
@@ -36,9 +41,9 @@ export default {
 				password: this.password,
 				nickname: this.nickname,
 			};
-			const response = await registerUser(userData);
-			console.log(response.data);
-			this.logMessage = `${response.data.username}님이 가입되었습니다.`;
+			const { data } = await registerUser(userData);
+			console.log(data.username);
+			this.logMessage = `${data.username} 님이 가입되었습니다`;
 			this.initForm();
 		},
 		initForm() {
