@@ -31,7 +31,7 @@ export default {
 	},
 	methods: {
 		logoutUser() {
-			this.$store.commit('clearUsername');
+			this.$store.commit('clearUserName');
 			this.$router.push('/login');
 		},
 	},

@@ -29,9 +29,7 @@
 </template>
 
 <script>
-import { loginUser } from '@/api/index.js';
 import { validateEmail } from '@/utils/validation.js';
-import { savaAuthToCookie, saveUserToCookie } from '@/utils/cookies.js';
 export default {
 	data() {
 		return {
@@ -55,11 +53,8 @@ export default {
 					username: this.username,
 					password: this.password,
 				};
-				const { data } = await loginUser(userData);
-				savaAuthToCookie(data.token);
-				saveUserToCookie(data.user.username);
-				this.$store.commit('setToken', data.token);
-				this.$store.commit('setUserName', data.user.username);
+				const data = await this.$store.dispatch('LOGIN', userData);
+				console.log(data);
 				this.$router.push('/main');
 			} catch (error) {
 				// 에러 핸들링할 코드
